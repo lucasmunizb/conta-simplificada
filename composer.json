@@ -74,7 +74,7 @@
         "analyse": "phpstan analyse --memory-limit 300M",
         "start": [
             "Composer\\Config::disableProcessTimeout",
-            "php ./bin/hyperf.php start"
+            "php ./bin/hyperf.php server:watch"
         ]
     }
 }

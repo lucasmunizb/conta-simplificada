@@ -15,9 +15,9 @@ services:
 
   hyperf-skeleton-mariadb:
     container_name: hyperf-skeleton-mariadb
-    image: mariadb:latest
+    image: mysql:latest
     volumes:
-      - ./.docker/mariadb:/var/lib/mysql
+      - ./.docker/mysql:/var/lib/mysql
     ports:
       - 3306:3306
     environment:
