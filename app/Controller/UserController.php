@@ -46,4 +46,15 @@ class UserController extends AbstractController
         return $balance >= $amount;
     }
 
+    public function checkUserTypeRecipient(int $id)
+    {
+        return $this->userService->getInfoById($id)->user_type;
+    }
+
+    public function verifyUserCanSendTransfer(int $id)
+    {
+        $userType = $this->userService->getInfoById($id)->user_type;
+        return $userType == 'standard';
+    }
+
 }
