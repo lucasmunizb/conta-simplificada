@@ -57,4 +57,22 @@ class UserController extends AbstractController
         return $userType == 'standard';
     }
 
+    public function withdral(int $idUser, float $amount)
+    {
+        $user = $this->userService->getInfoById($idUser);
+        $newBalance = $user->balance - $amount;
+        $user->update([
+            'balance' => $newBalance
+        ]);
+    }
+
+    public function deposit(int $idUser, float $amount)
+    {
+        $user = $this->userService->getInfoById($idUser);
+        $newBalance = $user->balance + $amount;
+        $user->update([
+            'balance' => $newBalance
+        ]);
+    }
+
 }
