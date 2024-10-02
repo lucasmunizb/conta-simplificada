@@ -44,7 +44,4 @@ class UserService implements UserInterface
         return $this->cache->delete($cacheKey);
     }
 
-    
-
-
 }
