@@ -59,20 +59,32 @@ class UserController extends AbstractController
 
     public function withdral(int $idUser, float $amount)
     {
+        $this->removeUserCache($idUser);
         $user = $this->userService->getInfoById($idUser);
         $newBalance = $user->balance - $amount;
         $user->update([
             'balance' => $newBalance
         ]);
+        $this->userService->storeUserInCache($idUser);
     }
 
     public function deposit(int $idUser, float $amount)
     {
+        $this->removeUserCache($idUser);
         $user = $this->userService->getInfoById($idUser);
         $newBalance = $user->balance + $amount;
         $user->update([
             'balance' => $newBalance
         ]);
+        $this->userService->storeUserInCache($idUser);
+    }
+
+    public function removeUserCache(int $id)
+    {
+        $user = $this->userService->getUserFromCache($id);
+        if (!$user) return false;
+
+        $this->userService->removeUserFromCache($id);
     }
 
 }
