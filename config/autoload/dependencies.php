@@ -11,5 +11,6 @@ declare(strict_types=1);
  */
 
 return [
-    \App\Service\TransferService::class => \App\Service\TransferService::class
+    \App\Service\TransferService::class => \App\Service\TransferService::class,
+    \App\Interface\UserInterface::class => \App\Interface\UserInterface::class
 ];
