@@ -22,9 +22,9 @@ class TransferRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'payer' =>'required',
-            'payee' =>'required',
-            'amount' =>'required',
+            'payer' =>'required|exists:users,id|different:payee',
+            'payee' =>'required|exists:users,id|different:payer',
+            'amount' =>'required|min:1',
         ];
     }
 }
